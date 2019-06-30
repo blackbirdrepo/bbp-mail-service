@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8000
+      name: bbp-mail-service

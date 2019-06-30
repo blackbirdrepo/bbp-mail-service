@@ -1,4 +1,9 @@
 spring:
+  application:
+    name: 'bbp-mail-service'
+  mvc:
+    favicon:
+      enabled: false
   mail:
     host: smtp.gmail.com
     port: 587
@@ -13,8 +18,28 @@ spring:
             enable: true
           ssl:
             trust: smtp.gmail.com
+server:
+  port: 8090
+
 kafka:
   bootstrapAddress: localhost:9092
   groupId: mail_service
   topics:
     email: template_email_sender
+info:
+  app:
+    name: ${spring.application.name}
+    description: Mail Service Application.
+    version: 1.0.0
+
+management:
+  endpoints.web.exposure.include: '*'
+  endpoint.health.show-details: always
+  security.enabled: false
+endpoints.health.sensitive: false
+
+eureka:
+  client:
+    registryFetchIntervalInSeconds: 10
+    serviceUrl:
+      defaultZone: http://localhost:8061/eureka/
